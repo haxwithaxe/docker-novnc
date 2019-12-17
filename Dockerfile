@@ -8,13 +8,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install -y --no-install-suggests --no-install-recommends \
-      git \
-      net-tools \
       novnc \
       socat \
       supervisor \
       x11vnc \
-      xterm \
       xvfb
 
 # Setup demo environment variables
