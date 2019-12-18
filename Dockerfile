@@ -23,7 +23,7 @@ ENV HOME=/home/gui_user \
     DISPLAY_WIDTH=1024 \
     DISPLAY_HEIGHT=768
 
-RUN useradd --uid $UID gui_user
+RUN adduser --uid $UID --disabled-password --gecos '' gui_user
 
 # supervisord needs to have write access to its log file 
 RUN touch /supervisord.log && chmod a+rw /supervisord.log
