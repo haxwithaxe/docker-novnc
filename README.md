@@ -1,7 +1,7 @@
 # noVNC Display Container
 ```
 ```
-This image is intended to be used for displaying X11 applications from other containers in a browser. A stand-alone demo as well as a [Version 2](https://docs.docker.com/compose/compose-file/#version-2) composition.
+This image is intended to be used for displaying X11 applications from other containers in a browser either as a base image or as a service in a composition.
 
 ## Image Contents
 
@@ -26,7 +26,7 @@ $ docker run --rm -it -p 8080:8080 haxwithaxe/novnc
 ```
 Open a browser and see the `xterm` demo at `http://<server>:8080/vnc.html`
 
-### V2 Composition
+### Composition
 An example docker-compose.yml is shown below to illustrate how this image can be used to greatly simplify the use of X11 applications in other containers. With just `docker-compose up -d`, your favorite IDE can be accessed via a browser.
 
 Some notable features:
@@ -49,12 +49,11 @@ services:
       - x11
 
   novnc:
-    image: theasp/novnc:latest
+    image: haxwithaxe/novnc:latest
     environment:
       # Adjust to your screen size
       - DISPLAY_WIDTH=1600
       - DISPLAY_HEIGHT=968
-      - RUN_XTERM=no
     ports:
       - "8080:8080"
     networks:
